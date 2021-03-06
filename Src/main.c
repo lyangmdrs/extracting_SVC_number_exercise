@@ -28,13 +28,36 @@ int main(void)
 {
     printf("Extracting SVC number\n");
 
-    __asm("SVC #8");
+    __asm("SVC #42"); 	// Calls a SVC exception.
+
+    uint32_t retrieved_SCV_number;
+
+    __asm("MOV %0, R0": "=r"(retrieved_SCV_number) ::);
 
 	/* Loop forever */
 	for(;;);
 }
 
-void SVC_Handler(void)
+__attribute__ ((naked)) void SVC_Handler(void)
+{
+	/*
+	 * ((naked)) functions does not have Prologue neither Epilogue sequences, so
+	 * it will not corrupt the value of R0.
+	 */
+
+	__asm("MRS R0, MSP");		// Move the content of a special register to a GP register.
+	__asm("B SVC_Handler_C");	// Branch to C implemented handler.
+
+}
+
+void SVC_Handler_C(uint32_t *pBaseOfStackFrame)
 {
 	printf("In SVC Handler!\n");
+
+	uint8_t *pReturn_addr = (uint8_t*)pBaseOfStackFrame[6];	// Move from R0 address to PC.
+	pReturn_addr-=2; 										// Extract the OPcode.
+
+	uint8_t svc_number = *pReturn_addr;
+
+	printf("SVC number is: %d\n", svc_number);
 }
