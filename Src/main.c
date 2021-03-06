@@ -28,6 +28,13 @@ int main(void)
 {
     printf("Extracting SVC number\n");
 
+    __asm("SVC #8");
+
 	/* Loop forever */
 	for(;;);
+}
+
+void SVC_Handler(void)
+{
+	printf("In SVC Handler!\n");
 }
