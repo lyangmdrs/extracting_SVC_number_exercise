@@ -30,9 +30,11 @@ int main(void)
 
     __asm("SVC #42"); 	// Calls a SVC exception.
 
-    uint32_t retrieved_SCV_number;
+    uint8_t retrieved_SVC_number;
 
-    __asm("MOV %0, R0": "=r"(retrieved_SCV_number) ::);
+    __asm("MOV %0, R0": "=r"(retrieved_SVC_number) ::);
+
+    printf("Retrieved SVC number: %d\n", retrieved_SVC_number);
 
 	/* Loop forever */
 	for(;;);
@@ -56,8 +58,5 @@ void SVC_Handler_C(uint32_t *pBaseOfStackFrame)
 
 	uint8_t *pReturn_addr = (uint8_t*)pBaseOfStackFrame[6];	// Move from R0 address to PC.
 	pReturn_addr-=2; 										// Extract the OPcode.
-
-	uint8_t svc_number = *pReturn_addr;
-
-	printf("SVC number is: %d\n", svc_number);
+	pBaseOfStackFrame[0] = *pReturn_addr;					// Return the OPcode in R0.
 }
