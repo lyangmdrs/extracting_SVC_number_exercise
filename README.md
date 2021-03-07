@@ -26,7 +26,7 @@ When the context switch occours, the processor saves the Program Counter (PC) an
 |`R0`⬅️*MSP*            |0|
  
 
-At this point, the **MSP** will be pointing to **R0**. So, is possible to get the **PC** value from the **MSP** just looking 6 memory positions after the **R0**.
+At this point, the **MSP** will be pointing to **R0**. So, it is possible to get the **PC** value from the **MSP** just looking 6 memory positions after the **R0**.
 
 > Exercise from [**Embedded Systems Programming on ARM Cortex-M3/M4 Processor**](https://www.udemy.com/course/embedded-system-programming-on-arm-cortex-m3m4/)
 
