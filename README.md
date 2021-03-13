@@ -1,6 +1,6 @@
 ![header](https://github.com/lyangmdrs/extracting_SVC_number_exercise/blob/develop/Img/header.png)
 ***
-# Peripheral Interrupt 
+# Extracting SVC Number
 
 The goal of this exercise is to call a SVC exception and retrieve the SVC number in the handler.
 
