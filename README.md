@@ -1,6 +1,6 @@
 ![header](https://github.com/lyangmdrs/extracting_SVC_number_exercise/blob/develop/Img/header.png)
 ***
-# Extracting SVC Number
+# SVC Number Extraction
 
 The goal of this exercise is to call a SVC exception and retrieve the SVC number in the handler.
 
