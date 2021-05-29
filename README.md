@@ -6,7 +6,7 @@ The goal of this exercise is to call a SVC exception and retrieve the SVC number
 
 ## Supevisor Call (SVC) Instructions 
 
-In a real time sistem, one way to access privileged kernel resources from a user task is using SVC instructions.
+In a real-time sistem, one way to access privileged kernel resources from a user task is using SVC instructions.
 
 When a SVC instructions is called, a number is passed by to the SVC Handler function. From this number, the request can by identified on kernel side.
 
